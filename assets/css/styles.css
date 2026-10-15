@@ -9,11 +9,24 @@ body {
   flex-direction: column;
 }
 
+a {
+  color: #000; 
+}
+
+button,
+input {
+  font-family: inherit;
+  font-size: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .topbar {
   display: flex; 
   justify-content: space-between; 
   align-items: center;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #000;
 }
 
 .main-content {
@@ -22,26 +35,66 @@ body {
   min-height: 0;
 }
 
+/*
+CHANNELS 
+*/
+
 .channels-panel {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid black;
+  border-right: 1px solid #000;
   width: 25%;
-  min-width: 200px;
+  min-width: 210px;
   max-width: 320px;
 }
 
 .channel-editor {
   display: flex;
-}
-
-.channels {
-  overflow-y: auto; 
+  gap: 8px;
+  padding: 12px; 
+  
+  button, input {
+    padding: 8px 12px; 
+  }
 }
 
 #channel-input {
+  min-width: 0;
   flex: 1;
 }
+
+.channels {
+  overflow-y: auto;
+  scrollbar-color: #000 #fff;
+  scrollbar-width: thin;
+  margin-bottom: 12px;
+}
+
+.channels-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  button {
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    text-align: left;
+    cursor: pointer; 
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #fff;
+  }
+
+  button:hover {
+    background-color: #ddd;
+  }
+}
+
+/*
+CHAT
+*/
 
 .section-content {
   flex: 1;
@@ -92,9 +145,8 @@ body.open #no-channel {
     width: 100%; 
     max-width: none; 
     border-right: 0;
-    background-color: aqua;
   }
-
+  
   body.open .channels-panel {
     display: none;
   }
