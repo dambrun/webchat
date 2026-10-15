@@ -6,7 +6,7 @@
   <title>Webchat</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body class="open">
   <header class="topbar">
     <h1>Webchat</h1>
     <a href="settings.html"><img src="" alt="icône des paramètres"></a>
@@ -15,7 +15,7 @@
     <div class="channels-panel">
       <form class="channel-editor">
         <input id="channel-input" type="text" placeholder="Nouveau salon">
-        <button>+</button>
+        <button><b>+</b></button>
       </form>
       <nav class="channels">
         <ul class="channels-list">
@@ -52,10 +52,10 @@
     
     <section class="section-content">
       <header class="section-header">
-        <button id="back"><</button>
-        <h2>
-          Nom du salon en cours
-        </h2>
+        <button id="back">&#9664;</button>
+        <strong id="channel-title">
+          # Nom du salon en cours suffisamment long pour tester
+        </strong>
       </header>
       <div class="messages">
         <article>
@@ -112,7 +112,7 @@
       <footer>
         <form class="message-composer">
           <input id="message-input" type="text" placeholder="Nouveau message">
-          <button>Envoyer</button>
+          <button><b>Envoyer</b></button>
         </form>
       </footer>
     </section>
