@@ -1,3 +1,71 @@
 html {
   font-family: sans-serif;
 }
+
+body {
+  margin: 0; 
+  height: 100dvh;  
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.channels-panel {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid black;
+  width: 25%;
+  min-width: 200px;
+  max-width: 320px;
+}
+
+.channel-editor {
+  display: flex;
+}
+
+.channels {
+  overflow-y: auto; 
+}
+
+#channel-input {
+  flex: 1;
+}
+
+.section-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#no-channel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.messages {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.message-composer {
+  display: flex;
+}
+
+#message-input {
+  flex: 1;
+}
