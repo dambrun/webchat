@@ -45,8 +45,21 @@ body {
 
 .section-content {
   flex: 1;
-  display: flex;
+  display: none;
   flex-direction: column;
+}
+
+body.open .section-content {
+  display: flex;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+}
+
+#back { 
+  display: none; 
 }
 
 #no-channel {
@@ -55,6 +68,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+body.open #no-channel {
+  display: none;
 }
 
 .messages {
@@ -68,4 +85,33 @@ body {
 
 #message-input {
   flex: 1;
+}
+
+@media (max-width: 600px) {
+  .channels-panel { 
+    width: 100%; 
+    max-width: none; 
+    border-right: 0;
+    background-color: aqua;
+  }
+
+  body.open .channels-panel {
+    display: none;
+  }
+  
+  #no-channel {
+    display: none;
+  }
+  
+  .section-content {
+    display: none;
+  }
+  
+  body.open .section-content {
+    display: flex;
+  }
+  
+  body.open #back {
+    display: block;
+  }
 }
