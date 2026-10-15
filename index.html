@@ -11,25 +11,29 @@
     <h1>Webchat</h1>
     <a href="settings.html"><img src="" alt="icône des paramètres"></a>
   </header>
-  <aside>
-    <header>
-      <input type="text">
-      <button>Nouveau salon</button>
-    </header>
+  <div>
+    <form>
+      <input type="text" placeholder="Nouveau salon">
+      <button>+</button>
+    </form>
     <nav>
       <ul>
-        <li>Nom d'un salon</li>
-        <li>Nom d'un autre salon</li>
-        <li>Nom d'encore un autre salon</li>
+        <li><button>Nom d'un salon</button></li>
+        <li><button>Nom d'un autre salon</button></li>
+        <li><button>Nom d'encore un autre salon</button></li>
       </ul>
     </nav>
-  </aside>
+  </div>
+  
   <main>
     <header>
       <h2>
         Nom du salon en cours
       </h2>
     </header>
+    <p>
+      Aucun salon sélectionné
+    </p>
     <section>
       <article>
         <h3>Nom d'une personne utilisatrice</h3>
@@ -43,8 +47,10 @@
       </article>
     </section>
     <footer>
-      <input type="text">
-      <button>Envoyer</button>
+      <form>
+        <input type="text" placeholder="Nouveau message">
+        <button>Envoyer</button>
+      </form>
     </footer>
   </main>
 </body>
