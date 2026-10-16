@@ -7,22 +7,23 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-  <header>
+  <header class="topbar">
     <h1>Webchat</h1>
   </header>
-  <main>
-    <label>
-      Adresse courriel
-      <input type="email">
-    </label>
-    
-    <label>
-      Mot de passe
-      <input type="password">
-    </label>
-    
-    <a href="index.html"><button>Se connecter</button></a>
-    <a href="index.html"><button>S'inscrire</button></a>
+  <main class="signin">
+    <form>
+      <h2>Connexion</h2>
+      
+      <label for="email">Adresse courriel</label>
+      <input type="email" id="email">
+      
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password">
+      
+      <button><a href="index.html">Se connecter</a></button>
+      <button><a href="index.html">S'inscrire</a></button>
+    </form>
   </main>
+  <footer class="footer"></footer>
 </body>
 </html>
