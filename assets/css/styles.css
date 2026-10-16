@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   font-family: sans-serif;
 }
@@ -17,8 +21,7 @@ button,
 input {
   font-family: inherit;
   font-size: 100%;
-  box-sizing: border-box;
-  padding: 0;
+  padding: 8px 12px;
   margin: 0;
 }
 
@@ -44,7 +47,6 @@ RÈGLES POUR LES CLASSES COMMUNES
   }
 
   .page-header-button {
-    padding: 8px 12px;
     line-height: 1;
   }
 }
@@ -84,10 +86,6 @@ CHANNELS
   display: flex;
   gap: 8px;
   padding: 12px; 
-  
-  button, input {
-    padding: 8px 12px;
-  }
 }
 
 #channel-input {
@@ -144,10 +142,6 @@ body.open .section-content {
   align-items: center;
   padding: 12px;
   gap: 8px;
-  
-  button {
-    padding: 8px 12px;
-  }
 }
 
 #channel-title {
@@ -229,10 +223,6 @@ body.open #no-channel {
   
   gap: 8px;
   padding: 12px; 
-  
-  button, input {
-    padding: 8px 12px; 
-  }
 }
 
 #message-input {
@@ -301,7 +291,6 @@ PARAMÈTRES
 
   button {
     margin-bottom: 12px;
-    padding: 8px 12px; 
     display: block;
   }
 
@@ -309,7 +298,6 @@ PARAMÈTRES
   input[type=password] {
     display: block;
     width: 100%;
-    padding: 8px 12px;
     margin-bottom: 12px;
   }
 }
