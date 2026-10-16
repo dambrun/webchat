@@ -6,16 +6,16 @@
   <title>Webchat</title>
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="">
+<body class="open">
   <header class="page-header">
     <strong class="page-header-title">Webchat</strong>
-    <button class="page-header-button"><a href="settings.html">&#9965;</a></button>
+    <a href="settings.html">Paramètres</a>
   </header>
   <main class="main-content">
     <div class="channels-panel">
       <form class="channel-editor">
-        <input id="channel-input" type="text" placeholder="Nouveau salon">
-        <button><b>+</b></button>
+        <input id="channel-input" type="text" placeholder="Nouveau salon" aria-label="Nouveau salon">
+        <button type="submit" aria-label="Ajouter un salon">+</button>
       </form>
       <nav class="channels">
         <ul class="channels-list">
@@ -23,7 +23,7 @@
           <li><button class="channel-item"># Nom d'un autre salon</button></li>
           <li><button class="channel-item"># Nom d'un autre salon avec un titre très long</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item channel-item-selected">Nom d'un autre salon</button></li>
+          <li><button class="channel-item channel-item-selected" aria-current="true">Nom d'un autre salon</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
@@ -44,49 +44,51 @@
     </div>
 
     <div id="no-channel">
-      <img src="" alt="Un logo de conversation">
-      <p>
-        <strong>Aucun salon sélectionné</strong>
-      </p>
+      <!-- 
+      <img src="" alt="Un image représentant une conversation">
+      -->
+      <h2>
+        Aucun salon sélectionné
+      </h2>
     </div>
     
     <section class="section-content">
       <header class="section-header">
-        <button id="back">&#9664;</button>
-        <strong id="channel-title">
+        <button id="back" aria-label="Retour à la liste des salons"><</button>
+        <span id="channel-title">
           # Nom du salon en cours suffisamment long pour tester
-        </strong>
+        </span>
       </header>
       <div class="messages">
         <article>
-          <strong>Nom d'une personne utilisatrice</strong>
+          <header>Nom d'une personne utilisatrice</header>
           <p>Contenu d'un message</p>
-          <time>2000/01/01 00:00:00</time>
+          <time datetime="2000-01-01 00:00:00">2000-01-01 00:00:00</time>
         </article>
         <article>
-          <strong>Nom d'une autre personne utilisatrice</strong>
+          <header>Nom d'une autre personne utilisatrice</header>
           <p>Contenu d'un autre message</p>
-          <time>2000/01/01 00:00:01</time>
+          <time datetime="2000-01-01 00:00:01">2000-01-01 00:00:01</time>
         </article>
         <article>
-          <strong>Nom d'une autre personne utilisatrice très long</strong>
+          <header>Nom d'une autre personne utilisatrice très long</header>
           <p>Contenu d'un autre message très long juste pour voir comment cela s'affiche, ceci est un test, voyons voir ! Et si nous intégrons un mot très long comme celui-ci là abcdefghijklmnopqrstuvwxyzadfaldkhslkfjghslkfghslkdfghsdfkgjshdflghdflk</p>
-          <time>2000/01/01 00:00:01</time>
+          <time datetime="2000-01-01 00:00:02">2000-01-01 00:00:02</time>
         </article>
         <article class="sent">
-          <strong>Mon nom</strong>
+          <header class="message-author">Mon nom</header>
           <p>Contenu d'un autre message</p>
-          <time>2000/01/01 00:00:01</time>
+          <time datetime="2000-01-01 00:00:03">2000-01-01 00:00:03</time>
         </article>
-        <article class="sent">
-          <strong>MonNomEstAussiSuperLongJustePourVoirTest</strong>
+        <article>
+          <header class="message-author">MonNomEstAussiSuperLongJustePourVoirTest</header>
           <p>Contenu d'un autre message</p>
-          <time>2000/01/01 00:00:01</time>
+          <time datetime="2000-01-01 00:00:04">2000-01-01 00:00:04</time>
         </article>
       </div>
       <footer>
         <form class="message-composer">
-          <input id="message-input" type="text" placeholder="Nouveau message">
+          <input id="message-input" type="text" placeholder="Nouveau message" aria-label="Nouveau message">
           <button><b>Envoyer</b></button>
         </form>
       </footer>

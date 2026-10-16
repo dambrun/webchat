@@ -46,12 +46,7 @@ RÈGLES POUR LES CLASSES COMMUNES
     font-size: 2em;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap;
-    
-  }
-  
-  .page-header-button {
-    line-height: 1;
+    white-space: nowrap; 
   }
 }
 
@@ -131,7 +126,7 @@ RÈGLES POUR LA PARTIE : CHANNELS
       background-color: #ddd;
     }
 
-    .channel-item-selected {
+    .channel-item[aria-current=true] {
       background-color: #eee;
     }
   }
@@ -168,9 +163,8 @@ body.open .section-content {
   white-space: nowrap;
 }
 
-#back { 
+#back {
   display: none;
-  line-height: 1;
 }
 
 #no-channel {
@@ -201,28 +195,20 @@ body.open #no-channel {
     border-radius: 2px;
     
     width: max-content;
-    max-width: 75%;
+    max-width: 80%;
+    overflow-wrap: anywhere;
     
     background-color: #eee;
     
-    strong {
-      width: 100%;
-      display: inline-block;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-    
-    p {
-      margin-block: 8px;
-      overflow-wrap: break-word;
+    header {
+      font-weight: bold;
     }
     
     time {
       display: block;
       width: 100%;
       text-align: right;
-      font-size: 0.8em;
+      font-size: 0.8rem;
     }
   }
   
