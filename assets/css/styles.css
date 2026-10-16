@@ -1,3 +1,7 @@
+/*
+RÈGLES GÉNÉRALES APPLIQUÉES DIRECTEMENT AUX ÉLÉMENTS
+*/
+
 * {
   box-sizing: border-box;
 }
@@ -34,10 +38,10 @@ RÈGLES POUR LES CLASSES COMMUNES
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-
+  
   padding: 12px;
   border-bottom: 2px solid #000;
-
+  
   .page-header-title {
     font-size: 2em;
     text-overflow: ellipsis;
@@ -45,7 +49,7 @@ RÈGLES POUR LES CLASSES COMMUNES
     white-space: nowrap;
     
   }
-
+  
   .page-header-button {
     line-height: 1;
   }
@@ -54,12 +58,12 @@ RÈGLES POUR LES CLASSES COMMUNES
 .page-footer {
   width: 100%;
   max-width: 600px;
-
+  
   margin-inline: auto;
   margin-top: 12px;
-
+  
   border-top: 2px solid black;
-
+  
   text-align: center;
 }
 
@@ -70,60 +74,71 @@ RÈGLES POUR LES CLASSES COMMUNES
 }
 
 /*
-CHANNELS 
+RÈGLES POUR LA PARTIE : CHANNELS 
 */
 
 .channels-panel {
   display: flex;
   flex-direction: column;
-  border-right: 2px solid #000;
+
   width: 25%;
   min-width: 210px;
   max-width: 320px;
-}
 
-.channel-editor {
-  display: flex;
-  gap: 8px;
-  padding: 12px; 
-}
-
-#channel-input {
-  min-width: 0;
-  flex: 1;
-}
-
-.channels {
-  overflow-y: auto;
-  scrollbar-color: #000 #fff;
-  scrollbar-width: thin;
-  margin-bottom: 12px;
-}
-
-.channels-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  border-right: 2px solid #000;
   
-  button {
-    width: 100%;
-    padding: 12px;
-    border: 0;
-    text-align: left;
-    cursor: pointer; 
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    background-color: #fff;
+  .channel-editor {
+    display: flex;
+    gap: 8px;
+
+    padding: 12px; 
+    
+    #channel-input {
+      min-width: 0;
+      flex: 1;
+    }
   }
   
-  button:hover {
-    background-color: #ddd;
+  .channels {
+    overflow-y: auto;
+    scrollbar-color: #000 #fff;
+    scrollbar-width: thin;
+
+    margin-bottom: 12px;
+  }
+  
+  .channels-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    .channel-item {
+      width: 100%;
+      padding: 12px;
+
+      text-align: left;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+
+      border: 0;
+      background-color: #fff;
+
+      cursor: pointer;
+    }
+    
+    .channel-item:hover {
+      background-color: #ddd;
+    }
+
+    .channel-item-selected {
+      background-color: #eee;
+    }
   }
 }
 
 /*
-CHAT
+RÈGLES POUR LA PARTIE : MESSAGES
 */
 
 .section-content {
@@ -175,7 +190,7 @@ body.open #no-channel {
   flex: 1;
   overflow-y: auto;
   scrollbar-color: #000 #fff;
-
+  
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -197,7 +212,7 @@ body.open #no-channel {
       text-overflow: ellipsis;
       overflow: hidden;
     }
-
+    
     p {
       margin-block: 8px;
       overflow-wrap: break-word;
@@ -210,7 +225,7 @@ body.open #no-channel {
       font-size: 0.8em;
     }
   }
-
+  
   article.sent {
     margin-left: auto;
     background-color: #ccc;
@@ -231,7 +246,7 @@ body.open #no-channel {
 }
 
 /*
-@MEDIA
+RÈGLES POUR LES @MEDIA
 */
 
 @media (max-width: 600px) {
@@ -263,7 +278,7 @@ body.open #no-channel {
 }
 
 /*
-PARAMÈTRES
+RÈGLES POUR LA PARTIE : SIGNIN et SETTINGS
 */
 
 .settings, 
@@ -273,27 +288,27 @@ PARAMÈTRES
   margin-top: 12px;
   margin-inline: auto;
   padding-inline: 12px;
-
+  
   box-sizing: border-box;
-
+  
   background-color: #f8f8f8;
-
+  
   fieldset {
     width: fit-content;
     display: flex;
     gap: 12px;
     margin-bottom: 12px;
   }
-
+  
   input[type=radio] {
     margin-right: 4px;
   }
-
+  
   button {
     margin-bottom: 12px;
     display: block;
   }
-
+  
   input[type=email],
   input[type=password] {
     display: block;
