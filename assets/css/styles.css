@@ -22,6 +22,22 @@ input {
   margin: 0;
 }
 
+/*
+RÈGLES POUR LES CLASSES COMMUNES
+*/
+
+.page-footer {
+  width: 100%;
+  max-width: 600px;
+
+  margin-inline: auto;
+  margin-top: 12px;
+
+  border-top: 2px solid black;
+
+  text-align: center;
+}
+
 .topbar {
   display: flex; 
   justify-content: space-between; 
@@ -263,7 +279,6 @@ PARAMÈTRES
 */
 
 .settings, 
-.footer,
 .signin {
   width: 100%;
   max-width: 600px;
@@ -299,8 +314,4 @@ PARAMÈTRES
     padding: 8px 12px;
     margin-bottom: 12px;
   }
-}
-
-.footer {
-  border: 1px solid black;
 }
