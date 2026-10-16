@@ -257,3 +257,37 @@ body.open #no-channel {
     display: block;
   }
 }
+
+/*
+PARAMÈTRES
+*/
+
+.settings, 
+.settings-footer {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 12px;
+  margin-inline: auto;
+  padding-inline: 12px;
+
+  background-color: #f8f8f8;
+
+  fieldset {
+    width: fit-content;
+    display: flex;
+    gap: 12px;
+  }
+
+  input[type=radio] {
+    margin-right: 4px;
+  }
+
+  button {
+    margin-block: 12px;
+    padding: 8px 12px;
+  }
+}
+
+.settings-footer {
+  border: 1px solid black;
+}
