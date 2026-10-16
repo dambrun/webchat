@@ -26,7 +26,7 @@ input {
   display: flex; 
   justify-content: space-between; 
   align-items: center;
-  border-bottom: 1px solid #000;
+  border-bottom: 2px solid #000;
 }
 
 .main-content {
@@ -42,7 +42,7 @@ CHANNELS
 .channels-panel {
   display: flex;
   flex-direction: column;
-  border-right: 1px solid #000;
+  border-right: 2px solid #000;
   width: 25%;
   min-width: 210px;
   max-width: 320px;
@@ -86,7 +86,7 @@ CHANNELS
     white-space: nowrap;
     background-color: #fff;
   }
-
+  
   button:hover {
     background-color: #ddd;
   }
@@ -112,7 +112,7 @@ body.open .section-content {
   align-items: center;
   padding: 12px;
   gap: 8px;
-
+  
   button {
     padding: 8px 12px;
   }
@@ -145,14 +145,56 @@ body.open #no-channel {
 }
 
 .messages {
+  padding-inline: 12px;
   flex: 1;
   overflow-y: auto;
+  scrollbar-color: #000 #fff;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  
+  article {
+    padding: 12px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    
+    width: max-content;
+    max-width: 75%;
+    
+    background-color: #eee;
+    
+    strong {
+      width: 100%;
+      display: inline-block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    p {
+      margin-block: 8px;
+      overflow-wrap: break-word;
+    }
+    
+    time {
+      display: block;
+      width: 100%;
+      text-align: right;
+      font-size: 0.8em;
+    }
+  }
+
+  article.sent {
+    margin-left: auto;
+    background-color: #ccc;
+  }
 }
 
 .message-composer {
   min-width: 0;
   display: flex;
-
+  
   gap: 8px;
   padding: 12px; 
   
