@@ -52,6 +52,10 @@ input {
   background-color: var(--color-primary);
 }
 
+input::placeholder {
+  color: var(--color-special);
+}
+
 button {
   cursor: pointer;
   color: var(--color-primary);
