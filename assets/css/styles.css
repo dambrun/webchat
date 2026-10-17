@@ -1,3 +1,16 @@
+:root {
+  --color-primary: #fff;
+  --color-primary-highlighted: #eee;
+  --color-primary-inversed: #000;
+  --color-special: #1D9BF0;
+}
+
+:root[data-theme="dark"] {
+  --color-primary: #000;
+  --color-primary-highlighted: #272727;
+  --color-primary-inversed: #fff;
+}
+
 /*
 RÈGLES GÉNÉRALES APPLIQUÉES DIRECTEMENT AUX ÉLÉMENTS
 */
@@ -7,7 +20,9 @@ RÈGLES GÉNÉRALES APPLIQUÉES DIRECTEMENT AUX ÉLÉMENTS
 }
 
 html {
+  color: var(--color-primary-inversed);
   font-family: sans-serif;
+  background-color: var(--color-primary);
 }
 
 body {
@@ -15,15 +30,41 @@ body {
 }
 
 a {
-  color: #000;
+  color: var(--color-special);
 }
 
 button,
 input {
+  color: inherit;
   font-family: inherit;
   font-size: 100%;
   padding: 8px 12px;
   margin: 0;
+}
+
+input {
+  background-color: var(--color-primary);
+  border-radius: 2px;
+  border: 1px solid var(--color-primary-inversed);
+}
+
+button {
+  cursor: pointer;
+
+  color: var(--color-primary);
+  background-color: var(--color-primary-inversed);
+
+  border: 1px solid var(--color-primary-inversed);
+  border-radius: 2px;
+}
+
+button:hover {
+  color: var(--color-primary-inversed);
+  background-color: var(--color-primary);
+}
+
+:focus-visible { 
+  outline-color: var(--color-special);
 }
 
 /*
@@ -37,7 +78,7 @@ RÈGLES POUR LES CLASSES COMMUNES
   gap: 8px;
   
   padding: 12px;
-  border-bottom: 2px solid #000;
+  border-bottom: 2px solid var(--color-primary-inversed);
   
   .page-header-title {
     font-size: 2em;
@@ -54,7 +95,7 @@ RÈGLES POUR LES CLASSES COMMUNES
   margin-inline: auto;
   margin-top: 12px;
   
-  border-top: 2px solid black;
+  border-top: 2px solid var(--color-primary-inversed);
   
   text-align: center;
 }
@@ -83,7 +124,7 @@ RÈGLES POUR LA PARTIE : CHANNELS
   min-width: 210px;
   max-width: 320px;
   
-  border-right: 2px solid #000;
+  border-right: 2px solid var(--color-primary-inversed);
   
   .channel-editor {
     display: flex;
@@ -99,7 +140,7 @@ RÈGLES POUR LA PARTIE : CHANNELS
   
   .channels {
     overflow-y: auto;
-    scrollbar-color: #000 #fff;
+    scrollbar-color: var(--color-primary-inversed) var(--color-primary);
     scrollbar-width: thin;
     
     margin-bottom: 12px;
@@ -118,19 +159,19 @@ RÈGLES POUR LA PARTIE : CHANNELS
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
+      color: var(--color-primary-inversed);
       
       border: 0;
-      background-color: #fff;
-      
-      cursor: pointer;
+      background-color: var(--color-primary);
     }
     
     .channel-item:hover {
-      background-color: #ddd;
+      background-color: var(--color-primary-highlighted);
     }
     
     .channel-item[aria-current=true] {
-      background-color: #eee;
+      color: var(--color-primary);
+      background-color: var(--color-special);
     }
   }
 }
@@ -187,7 +228,7 @@ body.open {
   padding-inline: 12px;
   flex: 1;
   overflow-y: auto;
-  scrollbar-color: #000 #fff;
+  scrollbar-color: var(--color-primary-inversed) var(--color-primary);
   
   display: flex;
   flex-direction: column;
@@ -195,14 +236,13 @@ body.open {
   
   article {
     padding: 12px;
-    border: 1px solid #000;
     border-radius: 2px;
     
     width: max-content;
     max-width: 80%;
     overflow-wrap: anywhere;
     
-    background-color: #eee;
+    background-color: var(--color-primary-highlighted);
     
     header {
       font-weight: bold;
@@ -218,7 +258,8 @@ body.open {
   
   article.sent {
     margin-left: auto;
-    background-color: #ccc;
+    background-color: var(--color-special);
+    color: var(--color-primary);
   }
 }
 
@@ -248,7 +289,8 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
   margin-top: 12px;
   padding: 12px;
   
-  background-color: #f6f6f6;
+  background-color: var(--color-primary-highlighted);
+  border-radius: 2px;
   
   h1 {
     margin-top: 0;
@@ -271,9 +313,11 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
     display: flex;
     flex-direction: column;
     gap: 12px;
+    border: 1px solid var(--color-primary-inversed);
     
     input[type=radio] {
       margin-right: 12px;
+      accent-color: var(--color-special);
     }
   }
 }
