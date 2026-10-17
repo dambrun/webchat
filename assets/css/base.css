@@ -36,10 +36,9 @@ a {
 
 button,
 input {
-  height: 2.5rem;
+  min-height: 2.5rem;
   color: inherit;
   font-family: inherit;
-  align-items: center;
   font-size: 100%;
   padding: 0 1rem;
   margin: 0;
@@ -80,10 +79,10 @@ RÈGLES POUR LES CLASSES COMMUNES
   justify-content: space-between;
   align-items: center;
   gap: 0.66rem;
-  
+
   padding: 0.66rem 1rem;
   border-bottom: 1px solid var(--color-primary-inversed);
-  
+
   .page-header-title {
     font-size: 2rem;
     text-overflow: ellipsis;
@@ -95,35 +94,11 @@ RÈGLES POUR LES CLASSES COMMUNES
 .page-footer {
   width: 100%;
   max-width: 600px;
-  
+
   margin-inline: auto;
   margin-top: 1rem;
-  
+
   border-top: 1px solid var(--color-primary-inversed);
-  
+
   text-align: center;
-}
-
-.main-content {
-  flex: 1;
-  display: flex;
-  min-height: 0;
-}
-
-.app {
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
-}
-
-.composer {
-  display: flex;
-  gap: 0.66rem;
-  
-  padding: 1rem;
-  
-  input {
-    flex: 1;
-    min-width: 0;
-  }
 }

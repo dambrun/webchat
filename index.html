@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Webchat</title>
+  <link rel="icon" href="data:,">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/chat.css">
 </head>
@@ -18,13 +19,13 @@
         <input id="channel-input" type="text" placeholder="Nouveau salon..." aria-label="Nouveau salon" autocomplete="off">
         <button type="submit" aria-label="Ajouter un salon">&#65291;</button>
       </form>
-      <nav class="channels">
-        <ul class="channels-list" aria-live="polite">
+      <nav class="channels scrollable">
+        <ul class="channels-list">
           <li><button class="channel-item"># Nom d'un salon</button></li>
           <li><button class="channel-item"># Nom d'un autre salon</button></li>
           <li><button class="channel-item"># Nom d'un autre salon avec un titre très long</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item channel-item-selected" aria-current="true">Nom d'un salon sélectionné</button></li>
+          <li><button class="channel-item" aria-current="true">Nom d'un salon sélectionné</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
           <li><button class="channel-item">Nom d'un autre salon</button></li>
@@ -44,13 +45,13 @@
       </nav>
     </div>
     
-    <div id="no-channel" class="no-channel">
+    <div class="no-channel">
       <!--
       <img src="" alt="Un image représentant une conversation">
       -->
-      <h2>
+      <strong>
         Aucun salon sélectionné
-      </h2>
+      </strong>
     </div>
     
     <section class="section-content">
@@ -60,37 +61,37 @@
           # Nom du salon en cours suffisamment long pour tester
         </span>
       </header>
-      <div class="messages" aria-live="polite">
+      <div class="messages scrollable" role="log">
         <article>
           <header>Nom d'une personne utilisatrice</header>
           <p>Contenu d'un message</p>
-          <time datetime="2000-01-01 00:00:00">2000-01-01 00:00:00</time>
+          <time datetime="2000-01-01T00:00:00">2000-01-01 00:00:00</time>
         </article>
         <article>
           <header>Nom d'une autre personne utilisatrice</header>
           <p>Contenu d'un autre message</p>
-          <time datetime="2000-01-01 00:00:01">2000-01-01 00:00:01</time>
+          <time datetime="2000-01-01T00:00:01">2000-01-01 00:00:01</time>
         </article>
         <article>
           <header>Nom d'une autre personne utilisatrice très long</header>
           <p>Contenu d'un autre message très long juste pour voir comment cela s'affiche, ceci est un test, voyons voir ! Et si nous intégrons un mot très long comme celui-ci là abcdefghijklmnopqrstuvwxyzadfaldkhslkfjghslkfghslkdfghsdfkgjshdflghdflk</p>
-          <time datetime="2000-01-01 00:00:02">2000-01-01 00:00:02</time>
+          <time datetime="2000-01-01T00:00:02">2000-01-01 00:00:02</time>
         </article>
         <article class="sent">
-          <header class="message-author">Mon nom</header>
+          <header>Mon nom</header>
           <p>Contenu d'un autre message</p>
-          <time datetime="2000-01-01 00:00:03">2000-01-01 00:00:03</time>
+          <time datetime="2000-01-01T00:00:03">2000-01-01 00:00:03</time>
         </article>
         <article>
-          <header class="message-author">MonNomEstAussiSuperLongJustePourVoirTest</header>
+          <header>Nom d'une autre personne utilisatrice</header>
           <p>Contenu d'un autre message</p>
-          <time datetime="2000-01-01 00:00:04">2000-01-01 00:00:04</time>
+          <time datetime="2000-01-01T00:00:04">2000-01-01 00:00:04</time>
         </article>
       </div>
       <footer>
         <form class="composer">
           <input id="message-input" type="text" placeholder="Nouveau message..." aria-label="Nouveau message" autocomplete="off">
-          <button><b>Envoyer</b></button>
+          <button type="submit">Envoyer</button>
         </form>
       </footer>
     </section>
