@@ -36,17 +36,16 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
     flex-direction: column;
     gap: 1rem;
     
+    padding: 1rem;
     border: 1px solid var(--color-primary-inversed);
     
     input[type=radio] {
+      margin-right: 1rem;
       cursor: pointer;
-      height: 1rem;
+      accent-color: var(--color-special);
     }
     
     label {
-      display: inline-flex;
-      align-items: center;
-      gap: 1rem;
       cursor: pointer;
     }
   }
