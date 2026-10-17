@@ -11,10 +11,7 @@ html {
 }
 
 body {
-  margin: 0; 
-  height: 100dvh;  
-  display: flex;
-  flex-direction: column;
+  margin: 0;
 }
 
 a {
@@ -66,6 +63,12 @@ RÈGLES POUR LES CLASSES COMMUNES
   flex: 1;
   display: flex;
   min-height: 0;
+}
+
+.app {
+  height: 100dvh;  
+  display: flex;
+  flex-direction: column;
 }
 
 /*
@@ -264,41 +267,44 @@ RÈGLES POUR LES @MEDIA
 }
 
 /*
-RÈGLES POUR LA PARTIE : SIGNIN et SETTINGS
+RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
 */
 
-.settings, 
-.signin {
+.signin,
+.settings {
   width: 100%;
   max-width: 600px;
-  margin-top: 12px;
+
   margin-inline: auto;
-  padding-inline: 12px;
+  margin-top: 12px;
+  padding: 12px;
   
-  box-sizing: border-box;
-  
-  background-color: #f8f8f8;
-  
-  fieldset {
-    width: fit-content;
-    display: flex;
-    gap: 12px;
-    margin-bottom: 12px;
+  background-color: #f6f6f6;
+
+  h1 {
+    margin-top: 0;
   }
-  
-  input[type=radio] {
-    margin-right: 4px;
-  }
-  
-  button {
-    margin-bottom: 12px;
-    display: block;
-  }
-  
+
   input[type=email],
   input[type=password] {
     display: block;
     width: 100%;
     margin-bottom: 12px;
+  }
+
+  button {
+    display: block;
+    margin-top: 12px;
+  }
+  
+  fieldset {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    input[type=radio] {
+      margin-right: 12px;
+    }
   }
 }
