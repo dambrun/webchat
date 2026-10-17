@@ -14,11 +14,11 @@
   <main class="main-content">
     <div class="channels-panel">
       <form class="channel-editor">
-        <input id="channel-input" type="text" placeholder="Nouveau salon" aria-label="Nouveau salon">
+        <input id="channel-input" type="text" placeholder="Nouveau salon" aria-label="Nouveau salon" autocomplete="off">
         <button type="submit" aria-label="Ajouter un salon">+</button>
       </form>
       <nav class="channels">
-        <ul class="channels-list">
+        <ul class="channels-list" aria-live="polite">
           <li><button class="channel-item"># Nom d'un salon</button></li>
           <li><button class="channel-item"># Nom d'un autre salon</button></li>
           <li><button class="channel-item"># Nom d'un autre salon avec un titre très long</button></li>
@@ -59,7 +59,7 @@
           # Nom du salon en cours suffisamment long pour tester
         </span>
       </header>
-      <div class="messages">
+      <div class="messages" aria-live="polite">
         <article>
           <header>Nom d'une personne utilisatrice</header>
           <p>Contenu d'un message</p>
@@ -88,7 +88,7 @@
       </div>
       <footer>
         <form class="message-composer">
-          <input id="message-input" type="text" placeholder="Nouveau message" aria-label="Nouveau message">
+          <input id="message-input" type="text" placeholder="Nouveau message" aria-label="Nouveau message" autocomplete="off">
           <button><b>Envoyer</b></button>
         </form>
       </footer>
