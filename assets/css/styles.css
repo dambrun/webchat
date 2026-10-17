@@ -15,7 +15,7 @@ body {
 }
 
 a {
-  color: #000; 
+  color: #000;
 }
 
 button,
@@ -43,7 +43,7 @@ RÈGLES POUR LES CLASSES COMMUNES
     font-size: 2em;
     text-overflow: ellipsis;
     overflow: hidden;
-    white-space: nowrap; 
+    white-space: nowrap;
   }
 }
 
@@ -66,7 +66,7 @@ RÈGLES POUR LES CLASSES COMMUNES
 }
 
 .app {
-  height: 100dvh;  
+  height: 100dvh;
   display: flex;
   flex-direction: column;
 }
@@ -89,7 +89,7 @@ RÈGLES POUR LA PARTIE : CHANNELS
     display: flex;
     gap: 8px;
     
-    padding: 12px; 
+    padding: 12px;
     
     input {
       min-width: 0;
@@ -283,9 +283,9 @@ RÈGLES POUR LES @MEDIA
 */
 
 @media (max-width: 600px) {
-  .channels-panel { 
-    width: 100%; 
-    max-width: none; 
+  .channels-panel {
+    width: 100%;
+    max-width: none;
     border-right: 0;
   }
   
