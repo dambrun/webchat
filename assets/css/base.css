@@ -1,0 +1,129 @@
+:root {
+  --color-primary: #fff;
+  --color-primary-highlighted: #eee;
+  --color-primary-inversed: #000;
+  --color-special: #1D9BF0;
+  --size-border-radius: 4px;
+}
+
+:root[data-theme="dark"] {
+  --color-primary: #000;
+  --color-primary-highlighted: #272727;
+  --color-primary-inversed: #fff;
+}
+
+/*
+RÈGLES GÉNÉRALES APPLIQUÉES DIRECTEMENT AUX ÉLÉMENTS
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color: var(--color-primary-inversed);
+  font-family: sans-serif;
+  background-color: var(--color-primary);
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: var(--color-special);
+}
+
+button,
+input {
+  height: 2.5rem;
+  color: inherit;
+  font-family: inherit;
+  align-items: center;
+  font-size: 100%;
+  padding: 0 1rem;
+  margin: 0;
+  border-radius: var(--size-border-radius);
+  border: 1px solid var(--color-primary-inversed);
+  accent-color: var(--color-special);
+}
+
+input {
+  background-color: var(--color-primary);
+}
+
+input::placeholder {
+  color: var(--color-special);
+}
+
+button {
+  cursor: pointer;
+  color: var(--color-primary);
+  background-color: var(--color-primary-inversed);
+}
+
+button:hover {
+  color: var(--color-primary-inversed);
+  background-color: var(--color-primary);
+}
+
+:focus-visible {
+  outline-color: var(--color-special);
+}
+
+/*
+RÈGLES POUR LES CLASSES COMMUNES
+*/
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.66rem;
+  
+  padding: 0.66rem 1rem;
+  border-bottom: 1px solid var(--color-primary-inversed);
+  
+  .page-header-title {
+    font-size: 2rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+}
+
+.page-footer {
+  width: 100%;
+  max-width: 600px;
+  
+  margin-inline: auto;
+  margin-top: 1rem;
+  
+  border-top: 1px solid var(--color-primary-inversed);
+  
+  text-align: center;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.composer {
+  display: flex;
+  gap: 0.66rem;
+  
+  padding: 1rem;
+  
+  input {
+    flex: 1;
+    min-width: 0;
+  }
+}

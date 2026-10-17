@@ -1,0 +1,53 @@
+/*
+RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
+*/
+
+.signin,
+.settings {
+  width: 100%;
+  max-width: 600px;
+  
+  margin-inline: auto;
+  margin-top: 1rem;
+  padding: 1rem;
+  
+  background-color: var(--color-primary-highlighted);
+  border-radius: var(--size-border-radius);
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  input[type=email],
+  input[type=password] {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  button {
+    display: block;
+    margin-top: 1rem;
+  }
+  
+  fieldset {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+    border: 1px solid var(--color-primary-inversed);
+    
+    input[type=radio] {
+      cursor: pointer;
+      height: 1rem;
+    }
+    
+    label {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+    }
+  }
+}
