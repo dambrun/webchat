@@ -112,6 +112,18 @@ RÈGLES POUR LES CLASSES COMMUNES
   flex-direction: column;
 }
 
+.composer {
+  display: flex;
+  gap: 8px;
+  
+  padding: 12px;
+  
+  input {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
 /*
 RÈGLES POUR LA PARTIE : CHANNELS 
 */
@@ -125,18 +137,6 @@ RÈGLES POUR LA PARTIE : CHANNELS
   max-width: 320px;
   
   border-right: 2px solid var(--color-primary-inversed);
-  
-  .channel-editor {
-    display: flex;
-    gap: 8px;
-    
-    padding: 12px;
-    
-    input {
-      min-width: 0;
-      flex: 1;
-    }
-  }
   
   .channels {
     overflow-y: auto;
@@ -260,19 +260,6 @@ body.open {
     margin-left: auto;
     background-color: var(--color-special);
     color: var(--color-primary);
-  }
-}
-
-.message-composer {
-  min-width: 0;
-  display: flex;
-  
-  gap: 8px;
-  padding: 12px;
-  
-  input {
-    flex: 1;
-    min-width: 0;
   }
 }
 
