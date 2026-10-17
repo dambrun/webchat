@@ -2,7 +2,7 @@
 <html lang="fr" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
   <title>Webchat</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -16,7 +16,7 @@
   <main class="main-content">
     <div class="channels-panel">
       <form class="composer">
-        <input id="channel-input" type="text" placeholder="Nouveau salon..." aria-label="Nouveau salon" autocomplete="off">
+        <input id="channel-input" type="text" placeholder="Nouveau salon..." aria-label="Nouveau salon" autocomplete="one-time-code">
         <button type="submit" aria-label="Ajouter un salon">&#65291;</button>
       </form>
       <nav class="channels scrollable">
@@ -90,7 +90,7 @@
       </div>
       <footer>
         <form class="composer">
-          <input id="message-input" type="text" placeholder="Nouveau message..." aria-label="Nouveau message" autocomplete="off">
+          <input id="message-input" type="text" placeholder="Nouveau message..." aria-label="Nouveau message" autocomplete="one-time-code">
           <button type="submit">Envoyer</button>
         </form>
       </footer>
