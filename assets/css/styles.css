@@ -139,6 +139,14 @@ RÈGLES POUR LA PARTIE : CHANNELS
 RÈGLES POUR LA PARTIE : MESSAGES
 */
 
+.no-channel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .section-content {
   flex: 1;
   display: none;
@@ -146,8 +154,13 @@ RÈGLES POUR LA PARTIE : MESSAGES
   min-width: 0;
 }
 
-body.open .section-content {
-  display: flex;
+body.open {
+  .no-channel {
+    display: none;
+  }
+  .section-content {
+    display: flex;
+  }
 }
 
 .section-header {
@@ -167,18 +180,6 @@ body.open .section-content {
 }
 
 .button-back {
-  display: none;
-}
-
-.no-channel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-body.open .no-channel {
   display: none;
 }
 
@@ -235,38 +236,6 @@ body.open .no-channel {
 }
 
 /*
-RÈGLES POUR LES @MEDIA
-*/
-
-@media (max-width: 600px) {
-  .channels-panel { 
-    width: 100%; 
-    max-width: none; 
-    border-right: 0;
-  }
-  
-  body.open .channels-panel {
-    display: none;
-  }
-  
-  .no-channel {
-    display: none;
-  }
-  
-  .section-content {
-    display: none;
-  }
-  
-  body.open .section-content {
-    display: flex;
-  }
-  
-  body.open .button-back {
-    display: block;
-  }
-}
-
-/*
 RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
 */
 
@@ -274,24 +243,24 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
 .settings {
   width: 100%;
   max-width: 600px;
-
+  
   margin-inline: auto;
   margin-top: 12px;
   padding: 12px;
   
   background-color: #f6f6f6;
-
+  
   h1 {
     margin-top: 0;
   }
-
+  
   input[type=email],
   input[type=password] {
     display: block;
     width: 100%;
     margin-bottom: 12px;
   }
-
+  
   button {
     display: block;
     margin-top: 12px;
@@ -302,9 +271,35 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
     display: flex;
     flex-direction: column;
     gap: 12px;
-
+    
     input[type=radio] {
       margin-right: 12px;
+    }
+  }
+}
+
+/*
+RÈGLES POUR LES @MEDIA
+*/
+
+@media (max-width: 600px) {
+  .channels-panel { 
+    width: 100%; 
+    max-width: none; 
+    border-right: 0;
+  }
+  
+  .no-channel {
+    display: none;
+  }
+  
+  body.open {
+    .channels-panel {
+      display: none;
+    }
+    
+    .button-back {
+      display: block;
     }
   }
 }
