@@ -75,20 +75,20 @@ RÈGLES POUR LA PARTIE : CHANNELS
 .channels-panel {
   display: flex;
   flex-direction: column;
-
+  
   width: 25%;
   min-width: 210px;
   max-width: 320px;
-
+  
   border-right: 2px solid #000;
   
   .channel-editor {
     display: flex;
     gap: 8px;
-
+    
     padding: 12px; 
     
-    #channel-input {
+    input {
       min-width: 0;
       flex: 1;
     }
@@ -98,7 +98,7 @@ RÈGLES POUR LA PARTIE : CHANNELS
     overflow-y: auto;
     scrollbar-color: #000 #fff;
     scrollbar-width: thin;
-
+    
     margin-bottom: 12px;
   }
   
@@ -110,22 +110,22 @@ RÈGLES POUR LA PARTIE : CHANNELS
     .channel-item {
       width: 100%;
       padding: 12px;
-
+      
       text-align: left;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-
+      
       border: 0;
       background-color: #fff;
-
+      
       cursor: pointer;
     }
     
     .channel-item:hover {
       background-color: #ddd;
     }
-
+    
     .channel-item[aria-current=true] {
       background-color: #eee;
     }
@@ -152,22 +152,22 @@ body.open .section-content {
   align-items: center;
   padding: 12px;
   gap: 8px;
+  
+  span {
+    display: inline-block;
+    padding-block: 10px;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 
-#channel-title {
-  display: inline-block;
-  padding-block: 10px;
-  margin: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-#back {
+.button-back {
   display: none;
 }
 
-#no-channel {
+.no-channel {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -175,7 +175,7 @@ body.open .section-content {
   justify-content: center;
 }
 
-body.open #no-channel {
+body.open .no-channel {
   display: none;
 }
 
@@ -223,12 +223,12 @@ body.open #no-channel {
   display: flex;
   
   gap: 8px;
-  padding: 12px; 
-}
-
-#message-input {
-  flex: 1;
-  min-width: 0;
+  padding: 12px;
+  
+  input {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 /*
@@ -246,7 +246,7 @@ RÈGLES POUR LES @MEDIA
     display: none;
   }
   
-  #no-channel {
+  .no-channel {
     display: none;
   }
   
@@ -258,7 +258,7 @@ RÈGLES POUR LES @MEDIA
     display: flex;
   }
   
-  body.open #back {
+  body.open .button-back {
     display: block;
   }
 }
