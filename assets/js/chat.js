@@ -71,7 +71,9 @@ const divMessages = document.getElementById("div-messages");
 
 document.getElementById("form-channel").addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log("Envoi du formulaire des salons", inputChannel.value);
+  channels.push({ id: -1, name: inputChannel.value.trim() }); // test
+  inputChannel.value = "";
+  loadChannels(channels);
 });
 
 document.getElementById("form-message").addEventListener("submit", (event) => {
@@ -89,6 +91,7 @@ Affichages (fonctions)
 */
 
 function loadChannels(channels) {
+  ulChannels.innerHTML = "";
   channels.forEach(channel => {
     displayChannel(channel);
   });
