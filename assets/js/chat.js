@@ -52,7 +52,13 @@ const messages = [
 Variables de l'état de la page
 */
 
-let currentChannelId = 0;
+const KEY_CURRENT_CHANNEL_ID = "keyCurrentChannelId";
+
+let currentChannelId = sessionStorage.getItem(KEY_CURRENT_CHANNEL_ID);
+if (currentChannelId) {
+  document.body.classList.add("open");
+}
+
 let currentUserId = 1234;
 
 /*
@@ -113,7 +119,8 @@ function displayChannel(channel) {
 }
 
 function clearSelectedChannel() {
-  currentChannelId = 0;
+  sessionStorage.removeItem(KEY_CURRENT_CHANNEL_ID);
+  currentChannelId = null;
   document.querySelectorAll(".channel-item").forEach(element => {
     element.removeAttribute("aria-current");
   });
@@ -123,6 +130,7 @@ function selectChannel(buttonElement, channel) {
   clearSelectedChannel();
   buttonElement.setAttribute("aria-current", "true");
   currentChannelId = channel.id;
+  sessionStorage.setItem(KEY_CURRENT_CHANNEL_ID, currentChannelId);
   document.body.classList.add("open");
 }
 
