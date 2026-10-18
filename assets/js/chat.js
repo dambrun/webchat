@@ -52,7 +52,7 @@ const messages = [
 Variables de l'état de la page
 */
 
-let currentChannelId = 12;
+let currentChannelId = 0;
 let currentUserId = 1234;
 
 /*
@@ -79,6 +79,11 @@ document.getElementById("form-message").addEventListener("submit", (event) => {
   console.log("Envoi du formulaire des messages", inputMessage.value);
 });
 
+document.getElementById("button-back").addEventListener("click" , () => {
+  clearSelectedChannel();
+  document.body.classList.remove("open");
+});
+
 /*
 Affichages (fonctions)
 */
@@ -98,9 +103,24 @@ function displayChannel(channel) {
   }
   buttonElement.className = "channel-item";
   buttonElement.textContent = "# " + channel.name;
+  buttonElement.addEventListener("click", () => selectChannel(buttonElement, channel));
 
   liElement.appendChild(buttonElement);
   ulChannels.appendChild(liElement);
+}
+
+function clearSelectedChannel() {
+  currentChannelId = 0;
+  document.querySelectorAll(".channel-item").forEach(element => {
+    element.removeAttribute("aria-current");
+  });
+}
+
+function selectChannel(buttonElement, channel) {
+  clearSelectedChannel();
+  buttonElement.setAttribute("aria-current", "true");
+  currentChannelId = channel.id;
+  document.body.classList.add("open");
 }
 
 function loadMessages(messages) {
