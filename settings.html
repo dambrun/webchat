@@ -7,22 +7,23 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/forms.css">
+  <script src="assets/js/settings.js" defer></script>
 </head>
 <body>
   <header class="page-header">
     <strong class="page-header-title">Webchat</strong>
-    <a href="index.html">Retour</a>
+    <a id="anchor-back" href="index.html">Retour</a>
   </header>
   <main class="settings">
     <h1>Paramètres</h1>
     <h2>Nom de la personne utilisatrice</h2>
-    <fieldset>
+    <fieldset id="fieldset-theme">
       <legend>Thème</legend>
       <label><input type="radio" name="theme" value="auto" checked>Automatique</label>
       <label><input type="radio" name="theme" value="light">Clair</label>
       <label><input type="radio" name="theme" value="dark">Sombre</label>
     </fieldset>
-    <button type="button">Se déconnecter</button>
+    <button id="button-signout" type="button">Se déconnecter</button>
   </main>
   <footer class="page-footer">
     <p>Webchat</p>
