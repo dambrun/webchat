@@ -49,6 +49,13 @@ const messages = [
 ];
 
 /*
+Variables de l'état de la page
+*/
+
+let currentChannelId = 12;
+let currentUserId = 1234;
+
+/*
 Éléments
 */
 
@@ -86,6 +93,9 @@ function displayChannel(channel) {
   const liElement = document.createElement("li");
   const buttonElement = document.createElement("button");
 
+  if (channel.id == currentChannelId) {
+    buttonElement.setAttribute("aria-current", "true");
+  }
   buttonElement.className = "channel-item";
   buttonElement.textContent = "# " + channel.name;
 
@@ -105,6 +115,9 @@ function displayMessage(message) {
   const pElement = document.createElement("p");
   const timeElement = document.createElement("time");
 
+  if (message.user_id == currentUserId) {
+    articleElement.classList.add("sent");
+  }
   headerElement.textContent = message.user_name;
   pElement.textContent = message.content;
   timeElement.textContent = message.created_at.slice(0, 19).replace('T', ' ');
