@@ -52,13 +52,9 @@ const messages = [
 Variables de l'état de la page
 */
 
-const KEY_CURRENT_CHANNEL_ID = "keyCurrentChannelId";
+const KEY_CURRENT_CHANNEL = "keyCurrentChannel";
 
-let currentChannelId = sessionStorage.getItem(KEY_CURRENT_CHANNEL_ID);
-if (currentChannelId) {
-  document.body.classList.add("open");
-}
-
+let currentChannel = JSON.parse(sessionStorage.getItem(KEY_CURRENT_CHANNEL));
 let currentUserId = 1234;
 
 /*
@@ -70,6 +66,8 @@ const inputMessage = document.getElementById("input-message");
 
 const ulChannels = document.getElementById("ul-channels");
 const divMessages = document.getElementById("div-messages");
+
+const spanChannelTitle = document.getElementById("span-channel-title");
 
 /*
 Événements
@@ -116,7 +114,7 @@ function displayChannel(channel) {
   const liElement = document.createElement("li");
   const buttonElement = document.createElement("button");
   
-  if (channel.id == currentChannelId) {
+  if (currentChannel && channel.id == currentChannel.id) {
     buttonElement.setAttribute("aria-current", "true");
   }
   buttonElement.className = "channel-item";
@@ -128,8 +126,8 @@ function displayChannel(channel) {
 }
 
 function clearSelectedChannel() {
-  sessionStorage.removeItem(KEY_CURRENT_CHANNEL_ID);
-  currentChannelId = null;
+  sessionStorage.removeItem(KEY_CURRENT_CHANNEL);
+  currentChannel = null;
   document.querySelectorAll(".channel-item").forEach(element => {
     element.removeAttribute("aria-current");
   });
@@ -138,8 +136,13 @@ function clearSelectedChannel() {
 function selectChannel(buttonElement, channel) {
   clearSelectedChannel();
   buttonElement.setAttribute("aria-current", "true");
-  currentChannelId = channel.id;
-  sessionStorage.setItem(KEY_CURRENT_CHANNEL_ID, currentChannelId);
+  currentChannel = channel;
+  sessionStorage.setItem(KEY_CURRENT_CHANNEL, JSON.stringify(currentChannel));
+  showChannelTitle(currentChannel.name);
+}
+
+function showChannelTitle(title) {
+  spanChannelTitle.textContent = "# " + title;
   document.body.classList.add("open");
 }
 
@@ -173,6 +176,14 @@ function displayMessage(message) {
 
 function scrollMessages() {
   divMessages.scrollTop = divMessages.scrollHeight;
+}
+
+/*
+Vérifications et chargements
+*/
+
+if (currentChannel) {
+  showChannelTitle(currentChannel.name);
 }
 
 loadChannels(channels);
