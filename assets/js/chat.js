@@ -84,7 +84,16 @@ document.getElementById("form-channel").addEventListener("submit", (event) => {
 
 document.getElementById("form-message").addEventListener("submit", (event) => {
   event.preventDefault();
-  console.log("Envoi du formulaire des messages", inputMessage.value);
+  if (inputMessage.value.trim()) {
+    messages.push({ 
+      user_id: 1234,
+      user_name: "monNom",
+      content: inputMessage.value,
+      created_at : "2026-10-03T10:09:08.123456+00:00" 
+    });
+    inputMessage.value = "";
+    loadMessages(messages);
+  }
 });
 
 document.getElementById("button-back").addEventListener("click" , () => {
@@ -106,14 +115,14 @@ function loadChannels(channels) {
 function displayChannel(channel) {
   const liElement = document.createElement("li");
   const buttonElement = document.createElement("button");
-
+  
   if (channel.id == currentChannelId) {
     buttonElement.setAttribute("aria-current", "true");
   }
   buttonElement.className = "channel-item";
   buttonElement.textContent = "# " + channel.name;
   buttonElement.addEventListener("click", () => selectChannel(buttonElement, channel));
-
+  
   liElement.appendChild(buttonElement);
   ulChannels.appendChild(liElement);
 }
@@ -135,9 +144,11 @@ function selectChannel(buttonElement, channel) {
 }
 
 function loadMessages(messages) {
+  divMessages.innerHTML = "";
   messages.forEach(message => {
     displayMessage(message);
   });
+  scrollMessages();
 }
 
 function displayMessage(message) {
@@ -145,7 +156,7 @@ function displayMessage(message) {
   const headerElement = document.createElement("header");
   const pElement = document.createElement("p");
   const timeElement = document.createElement("time");
-
+  
   if (message.user_id == currentUserId) {
     articleElement.classList.add("sent");
   }
@@ -153,11 +164,15 @@ function displayMessage(message) {
   pElement.textContent = message.content;
   timeElement.textContent = message.created_at.slice(0, 19).replace('T', ' ');
   timeElement.setAttribute('datetime', message.created_at);
-
+  
   articleElement.appendChild(headerElement);
   articleElement.appendChild(pElement);
   articleElement.appendChild(timeElement);
   divMessages.appendChild(articleElement);
+}
+
+function scrollMessages() {
+  divMessages.scrollTop = divMessages.scrollHeight;
 }
 
 loadChannels(channels);
