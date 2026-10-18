@@ -7,6 +7,7 @@
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/chat.css">
+  <script src="assets/js/chat.js" defer></script>
 </head>
 <body class="app open">
   <header class="page-header">
@@ -15,32 +16,13 @@
   </header>
   <main class="main-content">
     <div class="channels-panel">
-      <form class="composer">
-        <input id="channel-input" type="text" placeholder="Nouveau salon..." aria-label="Nouveau salon" autocomplete="one-time-code">
+      <form id="form-channel" class="composer">
+        <input id="input-channel" type="text" placeholder="Nouveau salon..." aria-label="Nouveau salon" autocomplete="off">
         <button type="submit" aria-label="Ajouter un salon">&#65291;</button>
       </form>
       <nav class="channels scrollable">
-        <ul class="channels-list">
-          <li><button class="channel-item"># Nom d'un salon</button></li>
-          <li><button class="channel-item"># Nom d'un autre salon</button></li>
-          <li><button class="channel-item"># Nom d'un autre salon avec un titre très long</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
+        <ul id="ul-channels" class="channels-list">
           <li><button class="channel-item" aria-current="true">Nom d'un salon sélectionné</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
-          <li><button class="channel-item">Nom d'un autre salon</button></li>
         </ul>
       </nav>
     </div>
@@ -61,36 +43,16 @@
           # Nom du salon en cours suffisamment long pour tester
         </span>
       </header>
-      <div class="messages scrollable" role="log">
-        <article>
-          <header>Nom d'une personne utilisatrice</header>
-          <p>Contenu d'un message</p>
-          <time datetime="2000-01-01T00:00:00">2000-01-01 00:00:00</time>
-        </article>
-        <article>
-          <header>Nom d'une autre personne utilisatrice</header>
-          <p>Contenu d'un autre message</p>
-          <time datetime="2000-01-01T00:00:01">2000-01-01 00:00:01</time>
-        </article>
-        <article>
-          <header>Nom d'une autre personne utilisatrice très long</header>
-          <p>Contenu d'un autre message très long juste pour voir comment cela s'affiche, ceci est un test, voyons voir ! Et si nous intégrons un mot très long comme celui-ci là abcdefghijklmnopqrstuvwxyzadfaldkhslkfjghslkfghslkdfghsdfkgjshdflghdflk</p>
-          <time datetime="2000-01-01T00:00:02">2000-01-01 00:00:02</time>
-        </article>
+      <div id="div-messages" class="messages scrollable" role="log">
         <article class="sent">
           <header>Mon nom</header>
           <p>Contenu d'un autre message</p>
           <time datetime="2000-01-01T00:00:03">2000-01-01 00:00:03</time>
         </article>
-        <article>
-          <header>Nom d'une autre personne utilisatrice</header>
-          <p>Contenu d'un autre message</p>
-          <time datetime="2000-01-01T00:00:04">2000-01-01 00:00:04</time>
-        </article>
       </div>
       <footer>
-        <form class="composer">
-          <input id="message-input" type="text" placeholder="Nouveau message..." aria-label="Nouveau message" autocomplete="one-time-code">
+        <form id="form-message" class="composer">
+          <input id="input-message" type="text" placeholder="Nouveau message..." aria-label="Nouveau message" autocomplete="off">
           <button type="submit">Envoyer</button>
         </form>
       </footer>
