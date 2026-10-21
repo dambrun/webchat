@@ -105,16 +105,16 @@ document.getElementById("form-channel").addEventListener("submit", (event) => {
 
 document.getElementById("form-message").addEventListener("submit", (event) => {
   event.preventDefault();
-  if (inputMessage.value.trim()) {
-    messages.push({ 
-      user_id: currentUser.id,
-      user_name: currentUser.email,
-      content: inputMessage.value,
-      created_at : "2026-10-03T10:09:08.123456+00:00" 
-    });
-    inputMessage.value = "";
-    loadMessages(messages);
-  }
+  const content = inputMessage.value.trim();
+  if (!content) return;
+  
+  appendMessage({
+    user_id: currentUser.id,
+    user_name: currentUser.email,
+    content: content,
+    created_at : new Date().toISOString()
+  });
+  inputMessage.value = "";
 });
 
 document.getElementById("button-back").addEventListener("click" , () => {
@@ -123,7 +123,7 @@ document.getElementById("button-back").addEventListener("click" , () => {
 });
 
 /*
-Affichages (fonctions)
+Gestion de l'affichage des salons
 */
 
 function loadChannels(channels) {
@@ -169,11 +169,21 @@ function showChannelTitle(title) {
   document.body.classList.add("open");
 }
 
+/*
+Gestion de l'affiche des messages
+*/
+
 function loadMessages(messages) {
   divMessages.innerHTML = "";
   messages.forEach(message => {
     displayMessage(message);
   });
+  scrollMessages();
+}
+
+function appendMessage(message) {
+  messages.push(message);
+  displayMessage(message);
   scrollMessages();
 }
 
