@@ -75,9 +75,11 @@ const spanChannelTitle = document.getElementById("span-channel-title");
 
 document.getElementById("form-channel").addEventListener("submit", (event) => {
   event.preventDefault();
-  channels.push({ id: -1, name: inputChannel.value.trim() }); // test
-  inputChannel.value = "";
-  loadChannels(channels);
+  if (inputChannel.value.trim()) {
+    channels.push({ id: -1, name: inputChannel.value.trim() }); // test
+    inputChannel.value = "";
+    loadChannels(channels);
+  }
 });
 
 document.getElementById("form-message").addEventListener("submit", (event) => {
