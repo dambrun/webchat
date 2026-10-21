@@ -49,12 +49,33 @@ const messages = [
 ];
 
 /*
-Variables de l'état de la page
+Fonctions de sauvegarde
 */
 
 const KEY_CURRENT_CHANNEL = "keyCurrentChannel";
 
-let currentChannel = JSON.parse(sessionStorage.getItem(KEY_CURRENT_CHANNEL));
+function readCurrentChannel() {
+  try {
+    return JSON.parse(sessionStorage.getItem(KEY_CURRENT_CHANNEL));
+  } catch (error) {
+    console.warn("Salon courant illisible, valeur ignorée.", error);
+    return null;
+  }
+}
+
+function writeCurrentChannel(channel) {
+  try {
+    sessionStorage.setItem(KEY_CURRENT_CHANNEL, JSON.stringify(channel));
+  } catch (error) {
+    console.warn("Erreur dans la sauvegarde du salon courant.", error);
+  }
+}
+
+/*
+Variables de l'état de la page
+*/
+
+let currentChannel = readCurrentChannel();
 let currentUser = { id: 1234, email: "blabla@bla" };
 
 /*
@@ -139,7 +160,7 @@ function selectChannel(buttonElement, channel) {
   clearSelectedChannel();
   buttonElement.setAttribute("aria-current", "true");
   currentChannel = channel;
-  sessionStorage.setItem(KEY_CURRENT_CHANNEL, JSON.stringify(currentChannel));
+  writeCurrentChannel(currentChannel);
   showChannelTitle(currentChannel.name);
 }
 
