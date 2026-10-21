@@ -55,7 +55,7 @@ Variables de l'état de la page
 const KEY_CURRENT_CHANNEL = "keyCurrentChannel";
 
 let currentChannel = JSON.parse(sessionStorage.getItem(KEY_CURRENT_CHANNEL));
-let currentUserId = 1234;
+let currentUser = { id: 1234, email: "blabla@bla" };
 
 /*
 Éléments
@@ -84,8 +84,8 @@ document.getElementById("form-message").addEventListener("submit", (event) => {
   event.preventDefault();
   if (inputMessage.value.trim()) {
     messages.push({ 
-      user_id: 1234,
-      user_name: "monNom",
+      user_id: currentUser.id,
+      user_name: currentUser.email,
       content: inputMessage.value,
       created_at : "2026-10-03T10:09:08.123456+00:00" 
     });
@@ -160,7 +160,7 @@ function displayMessage(message) {
   const pElement = document.createElement("p");
   const timeElement = document.createElement("time");
   
-  if (message.user_id == currentUserId) {
+  if (message.user_id == currentUser.id) {
     articleElement.classList.add("sent");
   }
   headerElement.textContent = message.user_name;
