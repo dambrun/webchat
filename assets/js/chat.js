@@ -1,31 +1,8 @@
 /*
-Fonctions de sauvegarde
-*/
-
-const KEY_CURRENT_CHANNEL = "keyCurrentChannel";
-
-function readCurrentChannel() {
-  try {
-    return JSON.parse(sessionStorage.getItem(KEY_CURRENT_CHANNEL));
-  } catch (error) {
-    console.warn("Salon courant illisible, valeur ignorée.", error);
-    return null;
-  }
-}
-
-function writeCurrentChannel(channel) {
-  try {
-    sessionStorage.setItem(KEY_CURRENT_CHANNEL, JSON.stringify(channel));
-  } catch (error) {
-    console.warn("Erreur dans la sauvegarde du salon courant.", error);
-  }
-}
-
-/*
 Variables de l'état de la page
 */
 
-let currentChannel = readCurrentChannel();
+let currentChannel = Local.readCurrentChannel();
 let currentUser = null;
 
 /*
@@ -97,7 +74,7 @@ function displayChannel(channel) {
 }
 
 function clearSelectedChannel() {
-  sessionStorage.removeItem(KEY_CURRENT_CHANNEL);
+  Local.deleteCurrentChannel();
   currentChannel = null;
   document.querySelectorAll(".channel-item").forEach(element => {
     element.removeAttribute("aria-current");
@@ -108,7 +85,7 @@ async function selectChannel(buttonElement, channel) {
   clearSelectedChannel();
   buttonElement.setAttribute("aria-current", "true");
   currentChannel = channel;
-  writeCurrentChannel(currentChannel);
+  Local.writeCurrentChannel(currentChannel);
   showChannelTitle(currentChannel.name);
   loadMessages(await Data.fetchMessages(currentChannel.id));
 }
