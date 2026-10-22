@@ -1,54 +1,4 @@
 /*
-Variables temporaires (tests)
-*/
-
-const channels = [
-  { 
-    id: 10,
-    name: "nomDuSalon" 
-  },
-  {
-    id: 11,
-    name: "autreNomDuSalon" 
-  },
-  {
-    id: 12,
-    name: "autreNomDuSalonCetteFoisAssezLongJustePourTester" 
-  },
-  {
-    id: 13,
-    name: "auNoDuSa" 
-  }
-];
-
-const messages = [
-  {
-    user_id: 123,
-    user_name: "nomPersonne",
-    content: "Contenu d'un message",
-    created_at : "2026-10-01T10:09:08.123456+00:00"
-  },
-  {
-    user_id: 12345,
-    user_name: "nomAutrePersonne",
-    content: "Contenu d'un autre message",
-    created_at : "2026-10-02T10:09:08.123456+00:00"
-  },
-  {
-    user_id: 1234,
-    user_name: "monNom",
-    content: "Contenu de mon message",
-    created_at : "2026-10-03T10:09:08.123456+00:00"
-  },
-  {
-    user_id: 123,
-    user_name: "nomPersonne",
-    content: "Contenu d'un autre message plus long cette fois, à nouveau, c'est juste pour tester.",
-    created_at : "2026-10-04T10:09:08.123456+00:00"
-  }
-];
-
-/*
 Fonctions de sauvegarde
 */
 
@@ -94,26 +44,24 @@ const spanChannelTitle = document.getElementById("span-channel-title");
 Événements
 */
 
-document.getElementById("form-channel").addEventListener("submit", (event) => {
+document.getElementById("form-channel").addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (inputChannel.value.trim()) {
-    channels.push({ id: -1, name: inputChannel.value.trim() }); // test
-    inputChannel.value = "";
-    loadChannels(channels);
-  }
+  const name = inputChannel.value.trim();
+  if (!name) return;
+
+  Data.createChannel(name)
+  inputChannel.value = "";
+
+  const channels = await Data.fetchChannels();
+  loadChannels(channels); // à enlever une fois l'écoute en temps réel de la liste des salons sur Supabase
 });
 
-document.getElementById("form-message").addEventListener("submit", (event) => {
+document.getElementById("form-message").addEventListener("submit", async (event) => {
   event.preventDefault();
   const content = inputMessage.value.trim();
   if (!content) return;
   
-  appendMessage({
-    user_id: currentUser.id,
-    user_name: currentUser.email,
-    content: content,
-    created_at : new Date().toISOString()
-  });
+  appendMessage(await Data.sendMessage(currentUser, currentChannel.id, content));
   inputMessage.value = "";
 });
 
@@ -142,7 +90,7 @@ function displayChannel(channel) {
   }
   buttonElement.className = "channel-item";
   buttonElement.textContent = "# " + channel.name;
-  buttonElement.addEventListener("click", () => selectChannel(buttonElement, channel));
+  buttonElement.addEventListener("click", async () => selectChannel(buttonElement, channel));
   
   liElement.appendChild(buttonElement);
   ulChannels.appendChild(liElement);
@@ -156,12 +104,13 @@ function clearSelectedChannel() {
   });
 }
 
-function selectChannel(buttonElement, channel) {
+async function selectChannel(buttonElement, channel) {
   clearSelectedChannel();
   buttonElement.setAttribute("aria-current", "true");
   currentChannel = channel;
   writeCurrentChannel(currentChannel);
   showChannelTitle(currentChannel.name);
+  loadMessages(await Data.fetchMessages(currentChannel.id));
 }
 
 function showChannelTitle(title) {
@@ -182,7 +131,6 @@ function loadMessages(messages) {
 }
 
 function appendMessage(message) {
-  messages.push(message);
   displayMessage(message);
   scrollMessages();
 }
@@ -219,5 +167,8 @@ if (currentChannel) {
   showChannelTitle(currentChannel.name);
 }
 
-loadChannels(channels);
-loadMessages(messages);
+async function init() {
+  loadChannels(await Data.fetchChannels());
+}
+
+init();
