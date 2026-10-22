@@ -29,6 +29,13 @@ document.getElementById("fieldset-theme").onchange = (event) => {
 }
 
 document.getElementById("button-signout").onclick = async () => {
-  Auth.signOut();
-  Local.clearSession();
+  const { error } = await Auth.signOut();
+  if (error) {
+    console.log(error.message);
+  }
 }
+
+Auth.onSessionEnded(() => {
+  Local.clearSession();
+  window.location.replace("./signin.html");
+});

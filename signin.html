@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/forms.css">
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="assets/js/spclient.js" defer></script>
+
   <script src="assets/js/auth.js" defer></script>
   <script src="assets/js/signin.js" defer></script>
 </head>
@@ -22,10 +25,10 @@
     <h1>Connexion</h1>
     <form id="form-signin">
       <label for="email">Adresse courriel</label>
-      <input id="email" type="email" autocomplete="email" required>
+      <input id="email" type="email" autocomplete="email">
 
       <label for="password">Mot de passe</label>
-      <input id="password" type="password" autocomplete="current-password" required>
+      <input id="password" type="password" autocomplete="current-password">
 
       <button type="submit">Se connecter</button>
     </form>

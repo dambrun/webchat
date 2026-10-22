@@ -47,6 +47,11 @@ document.getElementById("button-back").addEventListener("click" , () => {
   document.body.classList.remove("open");
 });
 
+Auth.onSessionEnded(() => {
+  Local.clearSession();
+  window.location.replace("./signin.html");
+});
+
 /*
 Gestion de l'affichage des salons
 */
