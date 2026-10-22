@@ -4,6 +4,7 @@ Variables de l'état de la page
 
 let currentChannel = Local.readCurrentChannel();
 let currentUser = null;
+let unsubscribeMessages = null;
 
 /*
 Éléments
@@ -35,11 +36,22 @@ document.getElementById("form-message").addEventListener("submit", async (event)
   const content = inputMessage.value.trim();
   if (!content) return;
   
-  appendMessage(await Data.sendMessage(currentUser, currentChannel.id, content));
+  const { error } = await Data.sendMessage(
+    currentChannel.id,
+    content,
+    currentUser.email
+  );
+  if (error) {
+    console.error(error.code, error.message);
+    return;
+  }
   inputMessage.value = "";
 });
 
 document.getElementById("button-back").addEventListener("click" , () => {
+  unsubscribeMessages?.();
+  unsubscribeMessages = null;
+  divMessages.replaceChildren();
   clearSelectedChannel();
   document.body.classList.remove("open");
 });
@@ -95,7 +107,10 @@ async function selectChannel(buttonElement, channel) {
   currentChannel = channel;
   Local.writeCurrentChannel(currentChannel);
   showChannelTitle(currentChannel.name);
-  loadMessages(await Data.fetchMessages(currentChannel.id));
+  // arrête l'écoute de l'ancien salon
+  unsubscribeMessages?.();
+  unsubscribeMessages = Data.subscribeToMessages(channel.id, appendMessage);
+  await loadMessages();
 }
 
 function showChannelTitle(title) {
@@ -107,8 +122,13 @@ function showChannelTitle(title) {
 Gestion de l'affiche des messages
 */
 
-function loadMessages(messages) {
-  divMessages.innerHTML = "";
+async function loadMessages() {
+  const { data: messages, error } = await Data.fetchMessages(currentChannel.id);
+  if (error) {
+    showError("Impossible de charger les messages.");
+    return;
+  }
+  divMessages.replaceChildren();
   messages.forEach(message => {
     displayMessage(message);
   });
@@ -129,7 +149,7 @@ function displayMessage(message) {
   if (message.user_id == currentUser.id) {
     articleElement.classList.add("sent");
   }
-  headerElement.textContent = message.user_name;
+  headerElement.textContent = message.username;
   pElement.textContent = message.content;
   timeElement.textContent = message.created_at.slice(0, 19).replace('T', ' ');
   timeElement.setAttribute('datetime', message.created_at);
@@ -156,6 +176,12 @@ async function init() {
   currentUser = await Auth.getUser();
   await loadChannels();
   Data.subscribeToChannels(() => loadChannels());
+
+  if (currentChannel) {
+    unsubscribeMessages?.();
+    unsubscribeMessages = Data.subscribeToMessages(currentChannel.id, appendMessage);
+    await loadMessages();
+  }
 }
 
 init();
