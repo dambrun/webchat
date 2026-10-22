@@ -18,7 +18,11 @@ const Auth = {
   },
   
   async getUser() {
-    return { id: 1234, email: "blabla@bla" };
+    const { data, error } = await supabaseClient.auth.getSession();
+    if (error || !data.session) {
+      return { user: null, error: error ?? new Error("Aucune session") };
+    }
+    return { user: data.session.user, error: null };
   },
   
   onSessionChange(callback) {

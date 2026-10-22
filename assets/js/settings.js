@@ -7,6 +7,14 @@ allInputNameTheme.forEach(function (inputNameTheme) {
   inputNameTheme.checked = inputNameTheme.value == currentTheme;
 });
 
+const h2Username = document.getElementById("h2-username");
+
+async function init() {
+  h2Username.textContent = (await Auth.getUser()).user.email;
+};
+
+init();
+
 /*
 Événements
 */
