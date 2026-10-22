@@ -28,9 +28,6 @@ document.getElementById("form-channel").addEventListener("submit", async (event)
 
   Data.createChannel(name)
   inputChannel.value = "";
-
-  const channels = await Data.fetchChannels();
-  loadChannels(channels); // à enlever une fois l'écoute en temps réel de la liste des salons sur Supabase
 });
 
 document.getElementById("form-message").addEventListener("submit", async (event) => {
@@ -56,8 +53,14 @@ Auth.onSessionEnded(() => {
 Gestion de l'affichage des salons
 */
 
-function loadChannels(channels) {
-  ulChannels.innerHTML = "";
+async function loadChannels() {
+  const { data: channels, error } = await Data.fetchChannels();
+  if (error) {
+    showError("Impossible de charger les salons.");
+    return;
+  }
+
+  ulChannels.replaceChildren();
   channels.forEach(channel => {
     displayChannel(channel);
   });
@@ -151,7 +154,8 @@ if (currentChannel) {
 
 async function init() {
   currentUser = await Auth.getUser();
-  loadChannels(await Data.fetchChannels());
+  await loadChannels();
+  Data.subscribeToChannels(() => loadChannels());
 }
 
 init();

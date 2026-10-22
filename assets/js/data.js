@@ -51,13 +51,18 @@ const Data = {
   ],
   
   async fetchChannels() {
-    return structuredClone(this.channels);
+    return await supabaseClient
+    .from("channels")
+    .select("*")
+    .order("name");
   },
   
   async createChannel(name) {
-    const channel = { id: crypto.randomUUID(), name };
-    this.channels.push(channel);
-    return channel;
+    return await supabaseClient
+    .from("channels")
+    .insert({ name })
+    .select()
+    .single();
   },
   
   async fetchMessages(channelId) {
@@ -78,6 +83,20 @@ const Data = {
     return message;
   },
   
-  subscribeToChannels() { },
+  subscribeToChannels(onNewChannel) {
+    supabaseClient
+    .channel("channels-realtime")
+    .on(
+      "postgres_changes",
+      { 
+        event: "INSERT", 
+        schema: "public", 
+        table: "channels" 
+      },
+      (payload) => onNewChannel(payload.new)
+    )
+    .subscribe();
+  },
+
   subscribeToMessages() { }
 }
