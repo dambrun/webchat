@@ -1,4 +1,13 @@
 /*
+Éléments (initialisation)
+*/
+const allInputNameTheme = document.querySelectorAll('input[name="theme"]');
+const currentTheme = Local.readCurrentTheme();
+allInputNameTheme.forEach(function (inputNameTheme) {
+  inputNameTheme.checked = inputNameTheme.value == currentTheme;
+});
+
+/*
 Événements
 */
 
@@ -15,6 +24,7 @@ document.getElementById("anchor-back").onclick = (event) => {
 document.getElementById("fieldset-theme").onchange = (event) => {
   if (event.target.matches('input[type="radio"]')) {
     console.log(`Sélection du thème : ${event.target.value}`);
+    Local.writeCurrentTheme(event.target.value);
   }
 }
 
