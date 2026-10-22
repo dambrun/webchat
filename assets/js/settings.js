@@ -18,6 +18,6 @@ document.getElementById("fieldset-theme").onchange = (event) => {
   }
 }
 
-document.getElementById("button-signout").onclick = () => {
-  console.log("Appui sur le bouton de déconnexion");
+document.getElementById("button-signout").onclick = async () => {
+  Auth.signOut();
 }

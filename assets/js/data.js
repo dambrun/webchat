@@ -1,21 +1,17 @@
-/*
-Variables temporaires (tests)
-*/
-
 const Data = {
   
   channels: [
-    { 
+    {
       id: 10,
-      name: "nomDuSalon" 
+      name: "nomDuSalon"
     },
     {
       id: 11,
-      name: "autreNomDuSalon" 
+      name: "autreNomDuSalon"
     },
     {
       id: 12,
-      name: "autreNomDuSalonCetteFoisAssezLongJustePourTester" 
+      name: "autreNomDuSalonCetteFoisAssezLongJustePourTester"
     },
     {
       id: 13,
@@ -68,15 +64,15 @@ const Data = {
     return this.messages.filter(
       message => message.channel_id === channelId
     );
-  }, 
+  },
   
   async sendMessage(currentUser, channelId, content) {
-    const message = { 
-      channel_id: channelId, 
-      user_id: currentUser.id, 
-      user_name: currentUser.name, 
-      content, 
-      created_at: new Date().toISOString() 
+    const message = {
+      channel_id: channelId,
+      user_id: currentUser.id,
+      user_name: currentUser.email,
+      content,
+      created_at: new Date().toISOString()
     };
     this.messages.push(message);
     return message;

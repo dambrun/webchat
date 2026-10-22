@@ -26,7 +26,7 @@ Variables de l'état de la page
 */
 
 let currentChannel = readCurrentChannel();
-let currentUser = { id: 1234, email: "blabla@bla" };
+let currentUser = null;
 
 /*
 Éléments
@@ -168,6 +168,7 @@ if (currentChannel) {
 }
 
 async function init() {
+  currentUser = await Auth.getUser();
   loadChannels(await Data.fetchChannels());
 }
 
