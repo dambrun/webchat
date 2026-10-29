@@ -19,8 +19,8 @@ const Data = {
     .from("messages")
     .select("id, content, created_at, user_id, username")
     .eq("channel_id", channelId)
-    .limit(50)
-    .order("created_at", { ascending: true });
+    .order("created_at", { ascending: false })
+    .limit(50);
   },
   
   async sendMessage(channelId, content, username) {

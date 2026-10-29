@@ -133,7 +133,7 @@ async function loadMessages() {
     return;
   }
   divMessages.replaceChildren();
-  messages.forEach(message => {
+  messages.reverse().forEach(message => {
     displayMessage(message);
   });
   scrollMessages();
@@ -180,7 +180,7 @@ async function init() {
   const { user } = await Auth.getUser();
   if (!user) return;
   currentUser = user;
-  
+
   await loadChannels();
   Data.subscribeToChannels(() => loadChannels());
 
