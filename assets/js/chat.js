@@ -177,7 +177,10 @@ if (currentChannel) {
 }
 
 async function init() {
-  currentUser = (await Auth.getUser()).user;
+  const { user } = await Auth.getUser();
+  if (!user) return;
+  currentUser = user;
+  
   await loadChannels();
   Data.subscribeToChannels(() => loadChannels());
 
