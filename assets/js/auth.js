@@ -13,8 +13,8 @@ const Auth = {
     });
   },
   
-  signOut() {
-    supabaseClient.auth.signOut();  
+  async signOut() {
+    return await supabaseClient.auth.signOut();  
   },
   
   async getUser() {
