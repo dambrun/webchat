@@ -68,7 +68,7 @@ Gestion de l'affichage des salons
 async function loadChannels() {
   const { data: channels, error } = await Data.fetchChannels();
   if (error) {
-    showError("Impossible de charger les salons.");
+    console.error("Impossible de charger les salons.", error);
     return;
   }
 
@@ -125,7 +125,7 @@ Gestion de l'affiche des messages
 async function loadMessages() {
   const { data: messages, error } = await Data.fetchMessages(currentChannel.id);
   if (error) {
-    showError("Impossible de charger les messages.");
+    console.error("Impossible de charger les messages.", error);
     return;
   }
   divMessages.replaceChildren();
