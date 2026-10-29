@@ -27,7 +27,11 @@ document.getElementById("form-channel").addEventListener("submit", async (event)
   const name = inputChannel.value.trim();
   if (!name) return;
 
-  Data.createChannel(name)
+  const { error } = await Data.createChannel(name);
+  if (error) {
+    console.error("Impossible de créer le salon.", error);
+    return;
+  }
   inputChannel.value = "";
 });
 
