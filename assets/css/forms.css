@@ -1,5 +1,6 @@
 /*
 RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
+Ces deux pages ont la même présentation.
 */
 
 .signin,
@@ -7,6 +8,7 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
   width: 100%;
   max-width: 600px;
   
+  /* margin-inline: auto permet de centrer horizontalement un bloc dont la largeur est limitée */
   margin-inline: auto;
   margin-top: 1rem;
   padding: 1rem;
@@ -30,6 +32,7 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
     margin-top: 1rem;
   }
   
+  /* Exemple d'utilisation de règles CSS imbriquées */
   fieldset {
     width: fit-content;
     display: flex;
@@ -39,6 +42,7 @@ RÈGLES POUR LA PARTIE : SIGNIN / SETTINGS
     padding: 1rem;
     border: 1px solid var(--color-primary-inversed);
     
+    /* Définition de styles pour les input[type=radio] qui sont à l'intérieur d'un élément fieldset */
     input[type=radio] {
       margin-right: 1rem;
       cursor: pointer;

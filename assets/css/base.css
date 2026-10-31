@@ -1,3 +1,10 @@
+/*
+VARIABLES (THÈME)
+Toutes les couleurs sont des variables CSS : pour changer l'apparence du site, on
+modifie ces valeurs, pas les règles. Le thème sombre redéfinit seulement ce qui change.
+L'attribut data-theme est posé sur <html> par local.js (Local.applyTheme).
+*/
+
 :root {
   --color-primary: #fff;
   --color-primary-highlighted: #eee;
@@ -16,6 +23,7 @@
 RÈGLES GÉNÉRALES APPLIQUÉES DIRECTEMENT AUX ÉLÉMENTS
 */
 
+/* Avec border-box, la largeur (width) inclut le padding et la bordure : les calculs de taille sont plus intuitifs. */
 * {
   box-sizing: border-box;
 }
@@ -34,6 +42,8 @@ a {
   color: var(--color-special);
 }
 
+/* Boutons et champs partagent le même gabarit (hauteur minimum de 2.5rem : confortable au doigt).
+   :not([type=radio]) exclut les boutons radio, qui gardent leur apparence native. */
 button,
 input:not([type=radio]) {
   min-height: 2.5rem;
@@ -60,6 +70,7 @@ button {
   background-color: var(--color-primary-inversed);
 }
 
+/* Au survol, les couleurs s'inversent. */
 button:hover {
   color: var(--color-primary-inversed);
   background-color: var(--color-primary);
@@ -70,7 +81,8 @@ button:hover {
 }
 
 /*
-RÈGLES POUR LES CLASSES COMMUNES
+RÈGLES POUR DES CLASSES COMMUNES
+Utilisées par plusieurs pages (pour l'en-tête et le pied de page).
 */
 
 .page-header {
@@ -84,6 +96,7 @@ RÈGLES POUR LES CLASSES COMMUNES
 
   .page-header-title {
     font-size: 2rem;
+    /* Les trois lignes suivantes tronquent un texte trop long avec « ... » */
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;

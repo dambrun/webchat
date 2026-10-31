@@ -1,8 +1,8 @@
-.main-content {
-  flex: 1;
-  display: flex;
-  min-height: 0;
-}
+/*
+STRUCTURE GÉNÉRALE
+.app occupe toute la hauteur de l'écran (100dvh tient compte des barres des navigateurs mobiles). 
+L'en-tête garde sa taille et .main-content prend le reste (flex: 1).
+*/
 
 .app {
   height: 100dvh;
@@ -10,6 +10,15 @@
   flex-direction: column;
 }
 
+.main-content {
+  flex: 1;
+  display: flex;
+  /* Sans min-height: 0, un enfant flex ne rétrécit pas sous la taille de son contenu :
+  la page entière défilerait au lieu de pouvoir défiler seulement les zones des salons et des messages. */
+  min-height: 0;
+}
+
+/* Formulaire « champ + bouton » réutilisé pour les salons et les messages */
 .composer {
   display: flex;
   gap: 0.66rem;
@@ -17,11 +26,12 @@
   padding: 1rem;
   
   input {
-    flex: 1;
-    min-width: 0;
+    flex: 1;       /* le champ prend toute la place restante */
+    min-width: 0;  /* permet au champ de rétrécir sur petit écran */
   }
 }
 
+/* Zone qui défile verticalement, avec des barres de défilement aux couleurs du thème */
 .scrollable {
   overflow-y: auto;
   scrollbar-color: var(--color-primary-inversed) var(--color-primary);
@@ -51,6 +61,7 @@ RÈGLES POUR LA PARTIE : CHANNELS
     padding: 0 1rem;
     margin: 0;
     
+    /* Espace entre les salons, sauf avant le premier */
     & > li {
       margin-top: 0.33rem;
       
@@ -76,6 +87,7 @@ RÈGLES POUR LA PARTIE : CHANNELS
       background-color: var(--color-primary-highlighted);
     }
     
+    /* Salon ouvert : l'attribut aria-current sert à la fois au style et à l'accessibilité */
     .channel-item[aria-current=true] {
       color: var(--color-primary);
       background-color: var(--color-special);
@@ -85,6 +97,8 @@ RÈGLES POUR LA PARTIE : CHANNELS
 
 /*
 RÈGLES POUR LA PARTIE : MESSAGES
+Deux blocs s'excluent : « Aucun salon sélectionné » et la section du salon.
+C'est la classe `open` sur <body> (ajoutée par chat.js) qui décide lequel est visible.
 */
 
 .no-channel {
@@ -100,7 +114,7 @@ RÈGLES POUR LA PARTIE : MESSAGES
 
 .section-content {
   flex: 1;
-  display: none;
+  display: none; /* masquée tant qu'aucun salon n'est ouvert */
   flex-direction: column;
   min-width: 0;
 }
@@ -129,6 +143,7 @@ body.open {
   }
 }
 
+/* Le bouton « Retour » n'existe que sur petit écran (voir @media plus bas) */
 .button-back {
   display: none;
 }
@@ -145,9 +160,9 @@ body.open {
     padding: 1rem;
     border-radius: var(--size-border-radius);
     
-    width: max-content;
-    max-width: 80%;
-    overflow-wrap: anywhere;
+    width: max-content;   /* la bulle s'adapte à son contenu… */
+    max-width: 80%;       /* …sans dépasser 80 % de la zone */
+    overflow-wrap: anywhere; /* coupe les mots très longs au lieu de déborder */
     
     background-color: var(--color-primary-highlighted);
     
@@ -162,6 +177,7 @@ body.open {
       font-size: 0.8rem;
     }
     
+    /* Messages envoyés par la personne connectée : à droite, couleur d'accent */
     &.sent {
       margin-left: auto;
       background-color: var(--color-special);
@@ -172,6 +188,8 @@ body.open {
 
 /*
 RÈGLES POUR LES @MEDIA
+Sur petit écran (mobile), on n'affiche qu'un panneau à la fois :
+la liste des salons OU le salon ouvert, avec un bouton « Retour » pour revenir.
 */
 
 @media (max-width: 600px) {
