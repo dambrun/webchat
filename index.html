@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
   <title>Webchat</title>
   <link rel="icon" href="data:,">
-
+  
+  <!-- Sans `defer` : le script s'exécute tout de suite, pour appliquer le thème avant l'affichage de la page (body) -->
   <script src="assets/js/local.js"></script>
-
+  
   <link rel="stylesheet" href="assets/css/base.css">
   <link rel="stylesheet" href="assets/css/chat.css">
-
+  
+  <!--
+  Les scripts `defer` sont exécutés dans l'ordre, après la lecture du HTML (la structure de la page).
+  Cet ordre compte : chaque fichier utilise ceux qui le précèdent.
+  bibliothèque Supabase -> spclient -> auth / data -> chat
+  -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
   <script src="assets/js/spclient.js" defer></script>
   
@@ -24,33 +30,33 @@
     <a href="settings.html">Paramètres</a>
   </header>
   <main class="main-content">
+    <!-- Panneau de gauche : création et liste des salons -->
     <div class="channels-panel">
       <form id="form-channel" class="composer">
         <input id="input-channel" type="text" placeholder="Nouveau salon..." aria-label="Nouveau salon" autocomplete="off">
         <button type="submit" aria-label="Ajouter un salon">&#65291;</button>
       </form>
       <nav class="channels scrollable">
+        <!-- Rempli par chat.js (displayChannel) -->
         <ul id="ul-channels" class="channels-list">
         </ul>
       </nav>
     </div>
     
+    <!-- Affiché tant qu'aucun salon n'est ouvert (masqué par body.open) -->
     <div class="no-channel">
-      <!--
-      <img src="" alt="Un image représentant une conversation">
-      -->
       <strong>
         Aucun salon sélectionné
       </strong>
     </div>
     
+    <!-- Salon ouvert : titre, messages et formulaire d'envoi -->
     <section class="section-content">
       <header class="section-header">
         <button id="button-back" class="button-back" aria-label="Retour à la liste des salons">&#65336;</button>
-        <span id="span-channel-title">
-          # Nom du salon en cours suffisamment long pour tester
-        </span>
+        <span id="span-channel-title"></span>
       </header>
+      <!-- role="log" : les lecteurs d'écran annoncent les nouveaux messages -->
       <div id="div-messages" class="messages scrollable" role="log"></div>
       <footer>
         <form id="form-message" class="composer">
