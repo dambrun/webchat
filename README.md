@@ -146,8 +146,9 @@ Le client **n'envoie jamais** `created_by` ni `user_id` : la base les remplit av
 ## Corrections et pistes d'amélioration
 - Afficher les erreurs dans la page (un `<p role="alert">`) plutôt que dans la console.
 - Obtenir `username` côté serveur (trigger ou profil) plutôt que depuis le client.
-- Charger les messages plus anciens (fausse pagination basé sur le défilement).
+- Charger les messages plus anciens (fausse pagination basée sur le défilement).
 - Empêcher un message d'apparaître en double si un envoi arrive entre l'abonnement et le chargement initial.
-- Tenir compte du fuseau horaire local pour l'horodatage des messages
-- Désactiver les boutons d'actions dans l'attente d'une réponse du service
-- Ajouter des effets d'animations ou transitions
+- Tenir compte du fuseau horaire local pour l'horodatage des messages.
+- Désactiver les boutons d'actions dans l'attente d'une réponse du service.
+- Ajouter des effets d'animations ou transitions.
+- Défiler automatiquement vers le dernier message reçu uniquement si la fenêtre des messages est déjà vers le bas.
