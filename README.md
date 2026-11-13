@@ -152,3 +152,4 @@ Le client **n'envoie jamais** `created_by` ni `user_id` : la base les remplit av
 - Désactiver les boutons d'actions dans l'attente d'une réponse du service.
 - Ajouter des effets d'animations ou transitions.
 - Défiler automatiquement vers le dernier message reçu uniquement si la fenêtre des messages est déjà vers le bas.
+- Ouvrir automatiquement un salon qui vient d'être créé et mettre le centre d'attention (_focus_) sur le formulaire des messages pour pouvoir en saisir directement.
